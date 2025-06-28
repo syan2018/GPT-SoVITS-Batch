@@ -16,34 +16,34 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '此女已逝，何人所为？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 玩家
         text: '咦？呀！哈！呵！'
-        emotion: "惊讶"
+        emotion: "默认"
 
   - scene_name: 第二幕·寒潭畔
     dialogues:
       - character: 玩家
         text: '潭瀑倒悬？怪哉！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '客卿！客卿且近前！某失一玉佩，若无此物，难除缚灵根，君可助寻？'
-        emotion: "焦急"
+        emotion: "默认"
       - character: 玩家
         text: '可是此玉？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '正是！此乃"狐仙泪"，根退！'
-        emotion: "开心"
+        emotion: "默认"
       - character: 精卫
         text: '某名卫，精通青丘百兽之性、山川之秘！卫当报恩，化为飞鸟，侍君左右。'
         emotion: "默认"
       - character: 玩家
         text: '吾之刃失于白狐之口，何以狩猎？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '君乃妖怪猎人，而非"太刀猎人"！百兽山川，皆可为刃！以君之狩技，某之智识，夺刃，易如反掌！'
-        emotion: "自信"
+        emotion: "默认"
 
   - scene_name: 第三幕·蛛网脱出
     dialogues:
@@ -52,19 +52,19 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '那白狐栖于赤卵，吾之刃衔于其口！'
-        emotion: "焦急"
+        emotion: "默认"
       - character: 精卫
         text: '君卿莫急，且看那擎天巨蛛之残肢，共有几何？'
         emotion: "默认"
       - character: 玩家
         text: '残肢仅七，缺一足？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '善！某料此断足隐于绝壁，下有营地，可瞬息往返。'
         emotion: "默认"
       - character: 玩家
         text: '赤卵悬于高网，无路可循？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '君请观地上蜚虫！雄虫舞八字回环，引蛛擒之。君可效仿，借力登高！'
         emotion: "默认"
@@ -73,13 +73,13 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '妙哉！甚是好用，前行之路，豁然开朗！'
-        emotion: "开心"
+        emotion: "默认"
 
   - scene_name: 第四幕·灵枣诱鹿
     dialogues:
       - character: 玩家
         text: '枝如石，叶如玉！此林竟由天雷炼就？'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '然也！昔年雷击巨木，玉髓凝而不腐，乃成奇观。'
         emotion: "默认"
@@ -94,7 +94,7 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '噫！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '灵鹿迅捷，然其嗜枣如命。鹿角卷枣，数愈多，步愈沉，灵动尽失，此时设伏，岂不美哉！'
         emotion: "默认"
@@ -109,7 +109,7 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '哈哈！枣与鹿皆已入吾囊中！且试灵鹿之脚力！'
-        emotion: "开心"
+        emotion: "默认"
       - character: 精卫
         text: '善！此鹿腾跃如风，更擅"凌空二踏"！君可驭之，攀跃玉叶高台，无所不往！'
         emotion: "默认"
@@ -118,16 +118,16 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '此鹿...何其似马？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '鹿耶？马耶？许是资产吝啬，未得鹿之动画，便以马替之。'
-        emotion: "调侃"
+        emotion: "默认"
       - character: 玩家
         text: '汝言何界天机？我不明白！'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '此乃三十三重天外之音，缘者自悟！'
-        emotion: "神秘"
+        emotion: "默认"
 
   - scene_name: 第五幕·寻狐跛脚
     dialogues:
@@ -139,13 +139,13 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '噫！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '噫！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '狭道千仞，慎行！'
-        emotion: "提醒"
+        emotion: "默认"
       - character: 玩家
         text: '此径，险极！'
         emotion: "默认"
@@ -157,7 +157,7 @@ scenes:
         emotion: "默认"
       - character: 精卫
         text: '追！其伤难远。'
-        emotion: "焦急"
+        emotion: "默认"
       - character: 精卫
         text: '此【青灰铅粉】，乃炼造至宝！慎藏莫失！'
         emotion: "默认"
@@ -166,28 +166,28 @@ scenes:
     dialogues:
       - character: 玩家
         text: '那白狐又遁！咦？此瀑竟倒冲云天？！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '当心——！'
-        emotion: "提醒"
+        emotion: "默认"
       - character: 玩家
         text: '呜！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '呜！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '寒泉透骨！此乃傩面族之巢穴，名曰古榕树洞。其族筑塔以避潮，水涨则徙高。'
         emotion: "默认"
       - character: 玩家
         text: '傩面絮语，其意难明。'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '其言曰："涨水，甚烦！"君欲逐白狐，必先助傩面治水。'
         emotion: "默认"
       - character: 玩家
         text: '墙内似有机枢，然门径何在？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '入室岂必循门？君且看此"赤鱬鱼"，取其天鳞含于口，可浮波踏浪！'
         emotion: "默认"
@@ -196,7 +196,7 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '原来如此，水力托举，破底而入！甚妙！'
-        emotion: "开心"
+        emotion: "默认"
       - character: 精卫
         text: '如此，洞内积水已排尽，傩面皆赞君。'
         emotion: "默认"
@@ -205,7 +205,7 @@ scenes:
         emotion: "默认"
       - character: 精卫
         text: '君今可浮波踏浪，来时路上之水域，皆可复探，欲试之耶？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 玩家
         text: '诛狐为要！余事容后。'
         emotion: "默认"
@@ -220,7 +220,7 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '咦？狐畔飞蛾，光若星屑。'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '此乃"惑心蛾"！振翅无声，捏其腹则响如雷，速擒之，可制玄龟！'
         emotion: "默认"
@@ -229,7 +229,7 @@ scenes:
         emotion: "默认"
       - character: 精卫
         text: '天赐良机！速剥其甲！'
-        emotion: "焦急"
+        emotion: "默认"
       - character: 精卫
         text: '此乃"镇海玄甲"，重若千钧，负之可辟水分渊，直探龙宫！'
         emotion: "默认"
@@ -247,7 +247,7 @@ scenes:
         emotion: "默认"
       - character: 精卫
         text: '君今御玄甲，来时路上之水域，皆可复探，欲试之耶？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 玩家
         text: '潜渊之能虽妙，然诛狐之要务，刻不容缓！'
         emotion: "默认"
@@ -259,16 +259,16 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '吾观此瀑，竟悬天而落？'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '此乃日照飞瀑。其鸟曰灌鸟，择流水而居。其羽油韧拒水，故能逆瀑翔空。昔年珥青蛇为其天敌。今日只剩蛇骨，而灌鸟群则愈大。'
         emotion: "默认"
       - character: 玩家
         text: '喔喔喔喔喔！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '喔喔喔喔喔！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 玩家
         text: '此蜕，蕴残煞之气！'
         emotion: "默认"
@@ -280,19 +280,19 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '不妙！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 玩家
         text: '险渡危台！'
         emotion: "默认"
       - character: 精卫
         text: '灌鸟亦坠！天赐良机，速剔其羽！'
-        emotion: "焦急"
+        emotion: "默认"
       - character: 精卫
         text: '以此"拒水翎"饰衣冠，逆瀑飞川，瞬息凌霄！'
         emotion: "默认"
       - character: 精卫
         text: '君今御此翎，来时路上之飞瀑，皆可复探，欲试之耶？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 玩家
         text: '攀瀑之能虽得，诛狐岂可耽俄顷？吾等，一同登巅！'
         emotion: "默认"
@@ -310,37 +310,37 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '坎卦，大吉？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '坎动，水归！'
         emotion: "默认"
       - character: 玩家
         text: '哦哦哦哦哦！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 精卫
         text: '哦哦哦哦哦！'
-        emotion: "惊讶"
+        emotion: "默认"
       - character: 玩家
         text: '至美矣！'
-        emotion: "开心"
+        emotion: "默认"
       - character: 精卫
         text: '亦至善亦！'
-        emotion: "开心"
+        emotion: "默认"
       - character: 玩家
         text: '此等仙姿，竟是吾之夺刃大敌？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 精卫
         text: '此乃青丘霸主，九尾妖狐。不知何故，先前失其八尾。方才白莲绽放，使其妖力尽归，现已是九尾全盛之姿。某虽冥冥有感，但...唉，唉，罢了，罢了。'
         emotion: "默认"
       - character: 精卫
         text: '此妖，非凡力可狩。此去，恐成终途。君，去意可决矣？'
-        emotion: "疑问"
+        emotion: "默认"
       - character: 玩家
         text: '猎人眼中，从无终途！唯有攻坚险途，方得大道坦途！'
-        emotion: "自信"
+        emotion: "默认"
       - character: 精卫
         text: '善！纵身碎骨，卫，亦侍君左右！'
-        emotion: "忠诚"
+        emotion: "默认"
 
   - scene_name: 第十幕·九尾真身
     dialogues:
@@ -349,4 +349,4 @@ scenes:
         emotion: "默认"
       - character: 玩家
         text: '以妖怪猎人之名，对九尾妖狐，予以讨伐！'
-        emotion: "自信" 
+        emotion: "默认" 
