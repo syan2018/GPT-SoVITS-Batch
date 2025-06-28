@@ -6,15 +6,16 @@ from .api_client import ApiClient
 from .utils import sanitize_filename
 import os
 from threading import Thread
-from playsound import playsound
+import winsound
 
 class App(ctk.CTk):
     def __init__(self, api_client, character_mapping, output_dir):
         super().__init__()
 
         self.api_client = api_client
-        self.character_mapping = character_mapping
+        self.global_character_mapping = character_mapping
         self.output_dir = output_dir
+        self.script_character_mapping = {} # 用于存储当前剧本的角色映射
 
         self.title("GPT-SoVITS 配音工具")
         self.geometry("1200x700")
@@ -51,8 +52,12 @@ class App(ctk.CTk):
 
         self.script_data = None
         self.current_dialogue_info = None
+        self.current_play_obj = None # 用于跟踪播放实例
 
     def open_script(self):
+        # 如果有音频正在播放，先停止
+        winsound.PlaySound(None, winsound.SND_PURGE)
+
         file_path = filedialog.askopenfilename(
             title="选择 YAML 剧本文件",
             filetypes=(("YAML files", "*.yaml"), ("All files", "*.*"))
@@ -64,6 +69,9 @@ class App(ctk.CTk):
         if not self.script_data:
             self.status_bar.configure(text=f"错误: 无法解析剧本 {os.path.basename(file_path)}")
             return
+        
+        # 加载剧本内的角色映射
+        self.script_character_mapping = self.script_data.get('character_models', {})
         
         self.populate_tree()
         self.status_bar.configure(text=f"已加载剧本: {self.script_data.get('script_name', '无标题')}")
@@ -80,6 +88,9 @@ class App(ctk.CTk):
                 self.tree.insert(scene_id, "end", f"dialogue_{scene_idx}_{dialogue_idx}", text=dialogue_text)
 
     def on_tree_select(self, event):
+        # 停止当前可能在播放的音频
+        winsound.PlaySound(None, winsound.SND_PURGE)
+
         selected_id = self.tree.selection()
         if not selected_id or not selected_id[0].startswith("dialogue_"):
             self.clear_main_frame()
@@ -119,7 +130,7 @@ class App(ctk.CTk):
         self.text_box = ctk.CTkTextbox(self.main_frame, height=150)
         self.text_box.grid(row=2, column=0, columnspan=2, padx=10, pady=5, sticky="nsew")
         self.text_box.insert("1.0", info.get("text", ""))
-        self.text_box.configure(state="disabled") # 默认不可编辑
+        self.text_box.configure(state="normal") # 允许编辑
         
         # 情感
         ctk.CTkLabel(self.main_frame, text="情感:", font=ctk.CTkFont(size=14, weight="bold")).grid(row=3, column=0, padx=10, pady=(10,0), sticky="w")
@@ -127,9 +138,24 @@ class App(ctk.CTk):
         self.emotion_entry = ctk.CTkEntry(self.main_frame, textvariable=self.emotion_var)
         self.emotion_entry.grid(row=3, column=1, padx=10, pady=(10,0), sticky="ew")
 
+        # --- 高级设置 ---
+        ctk.CTkLabel(self.main_frame, text="高级设置", font=ctk.CTkFont(size=16, weight="bold")).grid(row=4, column=0, columnspan=2, pady=(20, 5))
+
+        # 语速
+        ctk.CTkLabel(self.main_frame, text="语速:").grid(row=5, column=0, padx=10, pady=5, sticky="w")
+        self.speed_slider = ctk.CTkSlider(self.main_frame, from_=0.1, to=2.0, number_of_steps=19)
+        self.speed_slider.set(self.api_client.default_params.get('speed_facter', 1.0))
+        self.speed_slider.grid(row=5, column=1, padx=10, pady=5, sticky="ew")
+        
+        # 随机种子
+        ctk.CTkLabel(self.main_frame, text="随机种子:").grid(row=6, column=0, padx=10, pady=5, sticky="w")
+        self.seed_var = ctk.StringVar(value=str(self.api_client.default_params.get('seed', -1)))
+        self.seed_entry = ctk.CTkEntry(self.main_frame, textvariable=self.seed_var)
+        self.seed_entry.grid(row=6, column=1, padx=10, pady=5, sticky="ew")
+
         # 控制按钮
         self.button_frame = ctk.CTkFrame(self.main_frame)
-        self.button_frame.grid(row=4, column=0, columnspan=2, pady=20)
+        self.button_frame.grid(row=7, column=0, columnspan=2, pady=20)
 
         self.generate_button = ctk.CTkButton(self.button_frame, text="生成音频", command=self.generate_audio)
         self.generate_button.pack(side="left", padx=10)
@@ -161,20 +187,35 @@ class App(ctk.CTk):
         text = self.text_box.get("1.0", "end-1c") # 获取当前文本框内容以支持临时修改
         emotion = self.emotion_var.get()
         
-        voice = self.character_mapping.get(character)
-        if not voice:
-            self.status_bar.configure(text=f"错误: 未找到角色 '{character}' 的配置。")
+        # 优先使用剧本内映射，其次使用全局映射
+        model_name = self.script_character_mapping.get(character)
+        if not model_name:
+            model_name = self.global_character_mapping.get(character)
+        
+        if not model_name:
+            self.status_bar.configure(text=f"错误: 未在剧本或全局配置中找到角色 '{character}' 的模型。")
             self.generate_button.configure(state="normal")
             return
         
         output_path = self.get_output_path()
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         
+        # 从UI收集参数
+        try:
+            speed = self.speed_slider.get()
+            seed = int(self.seed_var.get())
+        except (ValueError, TclError):
+            self.status_bar.configure(text="错误: 语速或种子参数无效。")
+            self.generate_button.configure(state="normal")
+            return
+
         def task():
             audio_data = self.api_client.generate_audio(
                 text=text,
-                voice=voice,
-                other_params={"emotion": emotion}
+                model_name=model_name,
+                emotion=emotion,
+                speed_facter=speed,
+                seed=seed,
             )
             if audio_data:
                 with open(output_path, 'wb') as f:
@@ -194,14 +235,23 @@ class App(ctk.CTk):
             self.status_bar.configure(text="错误: 音频文件不存在。")
             return
 
+        # 停止当前可能在播放的音频，以防用户连续点击
+        winsound.PlaySound(None, winsound.SND_PURGE)
+
         def task():
             self.status_bar.configure(text="正在播放...")
             self.play_button.configure(state="disabled")
             try:
-                playsound(output_path)
-                self.status_bar.configure(text="播放完毕。")
+                winsound.PlaySound(output_path, winsound.SND_FILENAME | winsound.SND_ASYNC)
+                # winsound 在异步播放时会立即返回，我们没法简单地 wait
+                # 但我们可以通过另一个线程或定时器来检测播放是否结束
+                # 为简化起见，我们暂时只更新状态，按钮在下次操作时会恢复
+                self.status_bar.configure(text=f"正在播放: {os.path.basename(output_path)}")
+
             except Exception as e:
                 self.status_bar.configure(text=f"错误: 无法播放音频: {e}")
+            
+            # 异步播放，立即恢复按钮
             self.play_button.configure(state="normal")
 
         Thread(target=task, daemon=True).start()

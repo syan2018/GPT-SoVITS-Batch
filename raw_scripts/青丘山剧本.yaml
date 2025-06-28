@@ -1,4 +1,10 @@
 script_name: 青丘山剧本
+
+# 角色到模型的映射，此处的定义将优先于 config.yaml 中的全局定义
+character_models:
+  玩家: "那维莱特_ZH"
+  精卫: "萍姥姥_ZH"
+
 scenes:
   - scene_name: 第一幕.远眺台
     dialogues:

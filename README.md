@@ -65,18 +65,24 @@ GPT-SoVITS-Batch/
 
 ## 剧本格式标准 (YAML)
 
-为了便于程序解析和功能拓展，我们约定使用以下 YAML 格式：
+为了便于程序解析和功能拓展，我们约定使用以下 YAML 格式。将角色映射直接定义在剧本文件中，可以使剧本更加独立和便携。
 
 ```yaml
 script_name: 剧本标题
+
+# 角色到模型的映射，此处的定义将优先于 config.yaml 中的全局定义
+character_models:
+  角色名A: "模型名1"
+  角色名B: "模型名2"
+
 scenes:
   - scene_name: 章节一的标题
     dialogues:
-      - character: 角色名
-        text: "对话内容第一句"
+      - character: 角色名A
+        text: '对话内容第一句'
         emotion: "开心" # 可选的情感参数
-      - character: 另一个角色
-        text: "对话内容第二句"
+      - character: 角色名B
+        text: '对话内容第二句'
         emotion: "默认"
   - scene_name: 章节二的标题
     dialogues:

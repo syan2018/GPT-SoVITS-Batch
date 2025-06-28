@@ -1,8 +1,39 @@
 api:
   base_url: "http://127.0.0.1:8000"
 
-# 请根据您实际的模型配置，将这里的角色名映射到对应的 voice 参数
-# 角色名: "voice 参数"
+# 全局角色映射 (备用)
+# 当剧本文件中未提供 character_models 时，程序将使用此处的映射。
+# 格式: 角色名: "model_name"
 characters:
-  玩家: "shika" # 示例：将"玩家"映射到名为 "shika" 的声音
-  精卫: "misato" # 示例：将"精卫"映射到名为 "misato" 的声音 
+  玩家: "global_player_model"
+  精卫: "global_jingwei_model"
+  # 示例:
+  # 萍姥姥: "pinglaolao_ZH"
+
+# /infer_single 接口的默认参数
+inference_defaults:
+  version: "v4"
+  # app_key 和 dl_url 通常在需要时动态提供，此处留空
+  app_key: ""
+  dl_url: ""
+  # 参考音频相关的默认值
+  prompt_text_lang: "中文"
+  # 文本相关的默认值
+  text_lang: "中文"
+  text_split_method: "按标点符号切"
+  # 模型推理相关的默认值
+  top_k: 10
+  top_p: 1.0
+  temperature: 1.0
+  speed_facter: 1.0
+  repetition_penalty: 1.35
+  batch_size: 1
+  batch_threshold": 0.75
+  split_bucket: true
+  fragment_interval: 0.3
+  seed: -1
+  sample_steps": 16
+  # 其他
+  parallel_infer": true
+  media_type: "wav"
+  if_sr: false 

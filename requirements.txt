@@ -1,5 +1,4 @@
 requests
 PyYAML
 tqdm
-customtkinter
-playsound==1.2.2 
+customtkinter 
