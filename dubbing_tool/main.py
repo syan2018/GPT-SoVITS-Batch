@@ -16,7 +16,6 @@ def main():
         exit(1)
 
     api_config = config.get('api', {})
-    character_mapping = config.get('characters', {})
     inference_defaults = config.get('inference_defaults', {})
     output_dir = config.get('output_dir', 'output')
 
@@ -39,7 +38,6 @@ def main():
     # --- 启动 GUI ---
     app = App(
         api_client=api_client,
-        character_mapping=character_mapping,
         output_dir=output_dir
     )
     app.mainloop()

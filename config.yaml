@@ -1,39 +1,23 @@
 api:
-  base_url: "http://127.0.0.1:8000"
-
-# 全局角色映射 (备用)
-# 当剧本文件中未提供 character_models 时，程序将使用此处的映射。
-# 格式: 角色名: "model_name"
-characters:
-  玩家: "global_player_model"
-  精卫: "global_jingwei_model"
-  # 示例:
-  # 萍姥姥: "pinglaolao_ZH"
-
-# /infer_single 接口的默认参数
+  base_url: http://127.0.0.1:8000
 inference_defaults:
-  version: "v4"
-  # app_key 和 dl_url 通常在需要时动态提供，此处留空
-  app_key: ""
-  dl_url: ""
-  # 参考音频相关的默认值
-  prompt_text_lang: "中文"
-  # 文本相关的默认值
-  text_lang: "中文"
-  text_split_method: "按标点符号切"
-  # 模型推理相关的默认值
+  app_key: ''
+  batch_size: 1
+  batch_threshold: 0.75
+  dl_url: ''
+  fragment_interval: 0.3
+  if_sr: false
+  media_type: wav
+  parallel_infer: true
+  prompt_text_lang: 中文
+  repetition_penalty: 1.35
+  sample_steps: 16
+  seed: -1
+  speed_facter: 1.0
+  split_bucket: true
+  temperature: 1.0
+  text_lang: 中文
+  text_split_method: 按标点符号切
   top_k: 10
   top_p: 1.0
-  temperature: 1.0
-  speed_facter: 1.0
-  repetition_penalty: 1.35
-  batch_size: 1
-  batch_threshold": 0.75
-  split_bucket: true
-  fragment_interval: 0.3
-  seed: -1
-  sample_steps": 16
-  # 其他
-  parallel_infer": true
-  media_type: "wav"
-  if_sr: false 
+  version: v4
