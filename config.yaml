@@ -1,0 +1,8 @@
+api:
+  base_url: "http://127.0.0.1:8000"
+
+# 请根据您实际的模型配置，将这里的角色名映射到对应的 voice 参数
+# 角色名: "voice 参数"
+characters:
+  玩家: "shika" # 示例：将"玩家"映射到名为 "shika" 的声音
+  精卫: "misato" # 示例：将"精卫"映射到名为 "misato" 的声音 
