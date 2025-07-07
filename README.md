@@ -144,5 +144,6 @@ GPT-SoVITS-Batch/
 ### 额外鸣谢
 
 - **需求方/文档提供**: [@Bernkastel592746](https://space.bilibili.com/39357696)
+欢迎给贝伦大佬的怪猎demo捧场！[【关卡Demo】类怪物猎人生态白盒《青丘山》](https://www.bilibili.com/video/BV1SugkzkE3J)
 
 感谢所有为 GPT-SoVITS 项目做出贡献的开发者和社区成员！
