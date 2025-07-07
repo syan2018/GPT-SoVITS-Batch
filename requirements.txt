@@ -1,4 +1,7 @@
 requests
 PyYAML
 tqdm
-customtkinter 
+customtkinter
+
+# 打包依赖
+pyinstaller 

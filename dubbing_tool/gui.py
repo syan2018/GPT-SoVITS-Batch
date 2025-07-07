@@ -2,9 +2,9 @@ import customtkinter as ctk
 import tkinter as tk
 from tkinter import filedialog, ttk, TclError
 import json
-from .script_parser import parse_script
-from .api_client import ApiClient
-from .utils import sanitize_filename
+from dubbing_tool.script_parser import parse_script
+from dubbing_tool.api_client import ApiClient
+from dubbing_tool.utils import sanitize_filename
 import os
 from threading import Thread
 import winsound
